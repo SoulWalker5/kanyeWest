@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Api\QuotesController;
-use App\Http\Middleware\BasicAuth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::middleware([])
+    ->prefix('quotes')
+    ->as('quotes.')
+    ->group(function () {
+        Route::get('', QuotesController::class)->name('index');
+    });
