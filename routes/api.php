@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\QuotesController;
+use App\Http\Middleware\BasicAuth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware([])
+Route::middleware(BasicAuth::class)
     ->prefix('quotes')
     ->as('quotes.')
     ->group(function () {
